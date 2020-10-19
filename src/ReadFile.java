@@ -17,7 +17,6 @@ public class ReadFile {
             contents+=sc.nextLine();
         return contents.split(" ");
     }
-
     /**
      * Read specified file of "file_name" in content folder.
      * @param file_name Name of the file to be read without extension.
@@ -63,5 +62,38 @@ public class ReadFile {
         while(sc.hasNextLine())
             contents+=sc.nextLine();
         return contents.split(" ");
+    }
+    /**
+     *
+     * @param content
+     * @return
+     */
+    public static String assess(String content){
+        String output = "";
+        String words[] = content.split(" ");
+        output += "\nThe file contains "+words.length+" words. ";
+        int vowels = 0;
+        for (char c : content.toLowerCase().toCharArray()) {
+            if (c == 'e' || c == 'u' || c == 'i' || c == 'o' || c == 'a')
+                vowels++;
+        }
+        output += "There are "+vowels+" in the file. There is an average of "+(double)vowels/words.length+" vowels per word.";
+        return output;
+    }
+    public static String assess(File file) throws FileNotFoundException {
+        Scanner sc = new Scanner(file);
+        String contents = "";
+        while(sc.hasNextLine())
+            contents+=sc.nextLine();
+        String output = "";
+        String words[] = contents.split(" ");
+        output += "\nThe file contains "+words.length+" words. ";
+        int vowels = 0;
+        for (char c : contents.toLowerCase().toCharArray()) {
+            if (c == 'e' || c == 'u' || c == 'i' || c == 'o' || c == 'a')
+                vowels++;
+        }
+        output += "There are "+vowels+" in the file. There is an average of "+(double)vowels/words.length+" vowels per word.";
+        return output;
     }
 }
